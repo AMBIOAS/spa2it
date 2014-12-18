@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="no.strong.spa2it" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>2ITALIA</name>
+    <description>
+        Opplev Lucca.
+    </description>
+    <author email="support@strong.no" href="http://strong.no">
+        AMBIO Strong AS
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+    
+    <icon src="res/logo.png" />
+    
+    
+    <splash src="res/logo.png" density="land-ldpi"/>
+
+    <splash src="res/logo.png" density="port-ldpi"/>
+    
+</widget>
