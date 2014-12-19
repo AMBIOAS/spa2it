@@ -18,6 +18,29 @@
         ...
     ]
 }
-*/
 
+Accommodations
+1266787
+
+
+
+
+app.factory('Accommodations', function($http, $log) {
+    var factory = {};
+    
+    factory.getList = function() {
+        $http.get('http://2it.strong.no/Webdesk/get?page=1266787&properties=title,idSmallPicture,presentation&format=JSON&type=children')
+            .success( function(data) {
+                return data.elements;
+            })
+            .error( function (data, status) {
+                $log.log('[ERROR '+status+'] '+data);
+                return [];
+            });
+    };
+    
+    
+});
+
+*/
 

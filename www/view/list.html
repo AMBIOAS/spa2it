@@ -1,34 +1,43 @@
 
-<md-toolbar class="md-accent" md-theme="blue">
-    <div class="md-toolbar-tools">
-      <span class="md-flex">List</span>
-    </div>
-  </md-toolbar>
 
 <md-content class="md-padding">
 
-List {{ status }}
-<ul>
-<li>Ting</li>
-<li>Tang</li>
-<li>Annet</li>
-<li>Ting</li>
-<li>Tang</li>
-<li>Annet</li>
-<li>Ting</li>
-<li>Tang</li>
-<li>Annet</li>
-<li>Ting</li>
-<li>Tang</li>
-<li>Annet</li>
-<li>Ting</li>
-<li>Tang</li>
-<li>Annet</li>
-<li>Annet kdjhaklsdjf h</li>
-<li>Annet sjhasdlkfha lskdjfh alksjdhf lkasjhfd lk</li>
-<li>Annet</li>
-<li>Annet</li>
-</ul>
+    
+<!-- 
+{
+"presentation": "Leilighet i Lucca historiske sentrum med 4 soverom, 3 bad, stue/kjøkken og stor 60kvm terrasse. Sengeplass til 8 - 10 personer.",
+"idPage": 1266801,
+"idSmallPicture": 235120,
+"title": "Del Molinetto"
+},
 
-<a href="#/detail">detail</a>
-    </md-content>
+-->
+    
+<div layout="row" layout-align="center center">
+  <div><md-text-float label="Søk i overnatting" ng-model="findAccommodation"></md-text-float></div>
+</div>
+      
+
+    <md-list>
+      <md-item ng-repeat="accommodation in accommodations | filter: findAccommodation" class="repeat-animation">
+        <md-item-content>
+          
+            <img ng-show="accommodation.idSmallPicture" src="http://2it.strong.no/images/{{ accommodation.idSmallPicture }}" class="accommodation__img-small" alt="{{accommodation.title}}">
+            <img ng-hide="accommodation.idSmallPicture" src="http://www.2italia.com/images/163245" class="accommodation__img-small" alt="{{accommodation.title}}">
+         
+          <div class="md-tile-content">
+            <h3><a href="#/detail/{{accommodation.idPage}}">{{accommodation.title}}</a></h3>
+        
+            <p>
+             {{accommodation.presentation}}
+            </p>
+          </div>
+        </md-item-content>
+        <md-divider inset></md-divider>
+      </md-item>
+    </md-list>
+    
+
+  
+
+</md-content>

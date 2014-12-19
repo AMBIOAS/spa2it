@@ -1,6 +1,6 @@
 // angular app definition
 
-angular.module('spa2it', ['ngRoute', 'ngAnimate', 'spa2it.controllers'])
+var app = angular.module('spa2it', ['ngRoute', 'spa2it.controllers'])
     .config(function($routeProvider){
         $routeProvider
         .when('/',
@@ -8,7 +8,7 @@ angular.module('spa2it', ['ngRoute', 'ngAnimate', 'spa2it.controllers'])
             controller: 'ListCtrl',
             templateUrl: 'view/list.html'
         })
-        .when('/detail',
+        .when('/detail/:pageId',
         {
             controller: 'DetailCtrl',
             templateUrl: 'view/detail.html'
