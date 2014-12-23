@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html ng-app="spa2it">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <link rel="stylesheet" type="text/css" href="css/animation.css" />
+        <link rel="stylesheet" type="text/css" href="bower_components/angular-material/angular-material.css">
+        <link rel="stylesheet" type="text/css" href="bower_components/angular-material/themes/blue-theme.css">
+        
+        
+        <title>2ITALIA</title>
+    </head>
+    <body>
+    
+    
+        
+       
+        <md-toolbar md-scroll-shrink>
+            <div class="md-toolbar-tools">
+              <h3>
+                <span>2ITALIA</span>
+              </h3>
+            </div>
+        </md-toolbar>
+        <div ng-controller="TabsCtrl">
+            <md-tabs class="md-accent" md-selected="tabs.selectedIndex">
+              <md-tab id="tab1" aria-controls="tab1-content">
+               Attraksjoner
+              </md-tab>
+              <md-tab id="tab2" aria-controls="tab2-content">
+               Aktiviteter 
+              </md-tab>
+              <md-tab id="tab3" aria-controls="tab3-content">
+               Event 
+              </md-tab>
+              <md-tab id="tab4" aria-controls="tab4-content">
+               Bryllup 
+              </md-tab>
+              <md-tab id="tab5" aria-controls="tab5-content">
+               Kalender 
+              </md-tab>
+              <md-tab id="tab6" aria-controls="tab6-content">
+               Overnatting
+              </md-tab>
+            </md-tabs>
+       
+
+            <ng-switch on="tabs.selectedIndex" class="tabpanel-container">
+                <div role="tabpanel" id="tab1-content" aria-labelledby="tab1" ng-switch-when="0" md-swipe-left="next()" md-swipe-right="previous()">
+                    <h2>1</h2>
+                </div>
+                <div role="tabpanel" id="tab2-content" aria-labelledby="tab2" ng-switch-when="1" md-swipe-left="next()" md-swipe-right="previous()">
+                    <h2>2</h2>
+                </div>
+                <div role="tabpanel" id="tab3-content" aria-labelledby="tab3" ng-switch-when="2" md-swipe-left="next()" md-swipe-right="previous()">
+                    <h2>3</h2>
+                </div>
+                <div role="tabpanel" id="tab4-content" aria-labelledby="tab4" ng-switch-when="3" md-swipe-left="next()" md-swipe-right="previous()">
+                    <h2>4</h2>
+                </div>
+                <div role="tabpanel" id="tab5-content" aria-labelledby="tab5" ng-switch-when="4" md-swipe-left="next()" md-swipe-right="previous()">
+                    <h2>5</h2>
+                </div>
+                <div role="tabpanel" id="tab6-content" aria-labelledby="tab6" ng-switch-when="5" md-swipe-left="next()" md-swipe-right="previous()">
+                    <ng-include src="'view/list.html'"></ng-include>
+                </div>
+            </ng-switch>
+             </div>
+        
+<!--        <div ng-view class="slide-animation"></div>-->
+       
+       
+        
+        <script type="text/javascript" src="bower_components/hammerjs/hammer.min.js"></script>
+        <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+        <script type="text/javascript" src="bower_components/angular-route/angular-route.min.js"></script>
+        <script type="text/javascript" src="bower_components/angular-animate/angular-animate.min.js"></script>
+        <script type="text/javascript" src="bower_components/angular-aria/angular-aria.min.js"></script>
+        <script type="text/javascript" src="bower_components/angular-material/angular-material.min.js"></script>
+        
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="bower_components/ngCordova/dist/ng-cordova.min.js"></script>
+        
+        <script type="text/javascript" src="js/app.js"></script>
+        <script type="text/javascript" src="js/controller.js"></script>
+        <script type="text/javascript" src="js/service.js"></script>
+        <script type="text/javascript" src="js/constants.js"></script>
+    </body>
+</html>
