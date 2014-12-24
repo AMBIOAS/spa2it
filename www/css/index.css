@@ -1,6 +1,18 @@
-.accommodation__img-small {
-    border-radius: 30px;
-    border: 1px solid #ddd;
-    width: 200px;
-    margin: 8px;
+md-tab a {
+    text-decoration: none;
+    color: #80d8ff;
+}
+
+md-tab[aria-selected=true] a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+
+
+@media only screen and (min-width : 900px) {
+    md-card {
+        width: 48%;
+        float: left;
+    }
 }

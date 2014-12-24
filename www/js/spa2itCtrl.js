@@ -1,14 +1,24 @@
 // angular controllers definition
 
 angular.module('spa2itApp.controllers', ['ngMaterial', 'ngAnimate'])
-    .controller('TabsCtrl', ['$scope', '$location', function($scope, $location) {
+    .controller('TabsCtrl', ['$scope', '$location','$http', function($scope, $location, $http) {
         $scope.tabSelected = -1;
         $scope.showView = function(url){
             console.log(url);
            
             $location.path(url);
         };
-        //alert("Tab "+$scope.tabSelected);
+        
+        $scope.tabpages = []; //Accommodations.getList();
+        
+        $http.get('http://2it.strong.no/Webdesk/get?page=1266774&properties=title,label,presentation&format=JSON&type=children')
+        .success( function(data) {
+            $scope.tabpages = data.elements;
+        })
+        .error( function (data, status) {
+            $log.log('[ERROR '+status+'] '+data);
+            $scope.tabpages = [];
+        });
     }])
     // =================== SET UP IN THE ROUTER ====================
     .controller('MainCtrl', ['$scope', function($scope) {
@@ -19,6 +29,7 @@ angular.module('spa2itApp.controllers', ['ngMaterial', 'ngAnimate'])
         $scope.event = []; //Accommodations.getList();
         
         // GET ONE PAGE ONLY
+        $http.get('http://2it.strong.no/Webdesk/get?page=1266902&properties=title,idSmallPicture,presentation,text&format=JSON&type=page')
         $http.get('http://2it.strong.no/Webdesk/get?page=1266902&properties=title,idSmallPicture,presentation,text&format=JSON&type=page')
         .success( function(data) {
             $scope.event = data.elements[0];

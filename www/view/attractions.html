@@ -1,7 +1,23 @@
-    <md-content>
-      <h2>Severdigheter</h2>
-      <ul ng-repeat="attraction in attractions">
-          <li>{{attraction.title}}</li>
-      </ul>
-    </md-content>
-   
+<md-content class="md-padding">
+
+
+    <!--
+          <ul ng-repeat="attraction in attractions">
+              <li>{{attraction.title}}</li>
+          </ul>
+    -->
+
+    <md-card ng-repeat="attraction in attractions">
+
+
+        <h2>{{attraction.title}}</h2>
+
+        <p>
+            {{attraction.presentation}}
+        </p>
+
+
+    </md-card>
+
+
+</md-content>
