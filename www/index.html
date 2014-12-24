@@ -24,6 +24,7 @@
     <!-- MATERIAL CSS ===================================================== -->
     <link rel="stylesheet" type="text/css" href="bower_components/angular-material/angular-material.css">
     <link rel="stylesheet" type="text/css" href="bower_components/angular-material/themes/blue-theme.css">
+      <link rel="stylesheet" type="text/css" href="bower_components/angular-material/themes/cyan-theme.css">
     
     <!-- CUSTOM CSS ===================================================== -->
     <link rel="stylesheet" type="text/css" href="css/index.css">
@@ -35,8 +36,9 @@
     <div  ng-controller="TabsCtrl">
     <md-toolbar md-scroll-shrink>
       <div class="md-toolbar-tools">
-        <md-button href="#/infopages">
-          <md-icon icon="img/menu.svg" style="width: 24px; height: 24px;"></md-icon>
+        <!--<md-button href="#/infopages">-->
+        <md-button ng-click="toggleLeft()">
+          <md-icon icon="img/menu.svg" style="width: 24px; height: 24px;"><path fill="white" /></md-icon>
         </md-button>
         <span>2ITALIA</span>
         <!-- fill up the space between left and right area -->

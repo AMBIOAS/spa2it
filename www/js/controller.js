@@ -32,6 +32,12 @@ angular.module('spa2it.controllers', ['ngMaterial', 'ngAnimate'])
         $scope.previous = function() {
           $scope.tabs.selectedIndex = Math.max($scope.tabs.selectedIndex - 1, 0);
         };
+        $scope.toggleLeft = function() {
+            $mdSidenav('left').toggle()
+                .then(function(){
+                  $log.debug("toggle left is done");
+                });
+        };
         
     }]
     );
