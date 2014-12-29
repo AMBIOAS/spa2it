@@ -1,7 +1,24 @@
-    <md-content class="md-padding">
-      <h2>Leiligheter</h2>
-      <ul ng-repeat="accommodation in accommodations">
-          <li>{{accommodation.title}}</li>
-      </ul>
-    </md-content>
-   
+<md-content class="md-padding">
+
+    <div layout="row" layout-align="space-between center">
+        <div>&nbsp;</div>
+
+        <div>
+            Søk: <input type="text" ng-model="searchAccommodations">
+        </div>
+    </div>
+
+    <div class="accommodation" ng-repeat="accommodation in accommodations | filter: searchAccommodations">
+
+
+        <img class="accommodation__img" ng-src="{{accommodation.imgURL}}">
+
+        <h1 class="accommodation__title">{{accommodation.title}}</h1>
+
+        <p class="accommodation__presentation">
+            {{accommodation.presentation}}
+        </p>
+
+    </div>
+
+</md-content>

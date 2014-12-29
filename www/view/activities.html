@@ -1,7 +1,76 @@
-    <md-content class="md-padding">
-      <h2>Aktiviteter</h2>
-      <ul ng-repeat="activity in activities">
-          <li>{{activity.title}}</li>
-      </ul>
-    </md-content>
-   
+<md-content class="md-padding">
+
+
+
+
+    <div layout="row" layout-sm="column">
+        <div flex class="activities">
+
+            <div class="activities__header">
+                <img class="activities__img" ng-src="{{activities[0].imgURL}}">
+
+                <div class="activities__title">{{activities[0].title}}</div>
+                <div class="activities__presentation">{{activities[0].presentation}}</div>
+            </div>
+            
+            
+            
+            <div layout="row" layout-align="space-between center">
+                <div>&nbsp;</div>
+                <div>
+                     Søk: <input type="text" ng-model="searchActivitiesTrips">
+                </div>
+            </div>
+
+            <div class="trip" ng-repeat="trip in activitiesTrips | filter: searchActivitiesTrips">
+                <img class="trip__img" ng-src="{{trip.imgURL}}">
+                <h1 class="trip__title">{{trip.title}}</h1>
+                <p class="trip__presentation">
+                    {{trip.presentation}}
+                </p>
+            </div>
+
+            
+        </div>
+        <div flex class="activities">
+
+            <div class="activities__header">
+
+                <img class="activities__img" ng-src="{{activities[1].imgURL}}">
+
+                <div class="activities__title">{{activities[1].title}}</div>
+                <div class="activities__presentation">{{activities[0].presentation}}</div>
+            </div>
+            
+            
+            <div layout="row" layout-align="space-between center">
+                <div>&nbsp;</div>
+                <div>
+                    Søk: <input type="text" ng-model="searchActivitiesParts" >
+                </div>
+            </div>
+
+            <div class="part" ng-repeat="part in activitiesParts | filter: searchActivitiesParts">
+               
+               <table>
+                   <tr>
+                       <td><img class="part__img" ng-src="{{part.imgURL}}"></td>
+                       <td><h1 class="part__title">{{part.title}}</h1>
+                             <p class="part__presentation">
+                                 {{part.presentation}}
+                             </p></td>
+                   </tr>
+               </table>
+               
+
+                
+            </div>
+            
+        </div>
+    </div>
+
+
+
+
+
+</md-content>

@@ -9,10 +9,151 @@ md-tab[aria-selected=true] a {
 }
 
 
+.attraction {
+    width: 320px;
+    height: 480px;
+    overflow: hidden;
+    float: left;
+    margin-bottom: 40px;
+    margin-right: 20px;
+    position: relative;
+}
 
-@media only screen and (min-width : 900px) {
+.attraction__img {
+    position: absolute;
+}
+
+.attraction__title {
+    position: absolute;
+    padding: 0 8px;
+    
+    margin-top: 0;
+    background-color: black;
+    width: 100%;
+    opacity: 0.5;
+    color: white
+}
+
+.attraction__presentation {
+    position: absolute;
+    top: 320px;
+}
+
+
+.activities__header {
+    border-bottom: 1px solid #03a9f4;
+    height: 120px;
+    margin-bottom: 20px;
+}
+.activities__title {
+    font-size: 150%;
+}
+
+img.activities__img {
+    float: right;
+    padding: 0 20px;
+}
+
+
+
+.accommodation {
+    width: 320px;
+    height: 480px;
+    overflow: hidden;
+    float: left;
+    margin-bottom: 40px;
+    margin-right: 20px;
+    position: relative;
+}
+
+.accommodation__img {
+    position: absolute;
+}
+
+.accommodation__title {
+    position: absolute;
+    padding: 0 8px;
+    
+    margin-top: 0;
+    background-color: black;
+    width: 100%;
+    opacity: 0.5;
+    color: white
+}
+
+.accommodation__presentation {
+    position: absolute;
+    top: 320px;
+}
+
+/* Trips */
+
+
+.trip {
+    width: 320px;
+    height: 480px;
+    overflow: hidden;
+    float: left;
+    margin-bottom: 40px;
+    margin-right: 20px;
+    position: relative;
+}
+
+.trip__img {
+    position: absolute;
+}
+
+.trip__title {
+    position: absolute;
+    padding: 0 8px;
+    
+    margin-top: 0;
+    background-color: black;
+    width: 100%;
+    opacity: 0.5;
+    color: white
+}
+
+.trip__presentation {
+    position: absolute;
+    top: 320px;
+}
+
+
+/* Parts */
+
+
+.part {
+    height: 180px
+    margin-bottom: 20px;
+}
+
+.part__img {
+   
+}
+
+.part__title {
+    font-size: 18px;
+}
+
+.part__presentation {
+   font-size: 14px;
+}
+
+
+
+input[type=text] {
+    border: 1px solid #03a9f4;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+
+}
+
+/* @media only screen and (min-width : 900px) {
     md-card {
         width: 48%;
         float: left;
     }
 }
+*/

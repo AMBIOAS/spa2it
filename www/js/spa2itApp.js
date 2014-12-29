@@ -1,7 +1,7 @@
 // angular app definition
 
 angular.module('spa2itApp',  ['ngRoute', 'spa2itApp.controllers'])
-    .config(function($routeProvider,$sceProvider){ //, $locationProvider){
+.config(function($routeProvider,$sceProvider){ //, $locationProvider){
         $sceProvider.enabled(false);
         $routeProvider
         .when('/', // accommodations
@@ -53,4 +53,6 @@ angular.module('spa2itApp',  ['ngRoute', 'spa2itApp.controllers'])
     
     //$locationProvider.html5Mode(true);
     
-});
+})
+;
+
