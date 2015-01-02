@@ -1,23 +1,27 @@
 <md-content class="md-padding">
+    
+
+<div layout="row" layout-align="space-between center">
+  <div>&nbsp;</div>
+
+  <div>Søk: <input type="text" ng-model="searchAttractions"></div>
+</div>
+
+    
+
+    <div class="attraction" ng-repeat="attraction in attractions | filter: searchAttractions">
 
 
-    <!--
-          <ul ng-repeat="attraction in attractions">
-              <li>{{attraction.title}}</li>
-          </ul>
-    -->
+        <img class="attraction__img" ng-src="{{attraction.imgURL}}">   
+        
+        <h1 class="attraction__title">{{attraction.title}}</h1>
 
-    <md-card ng-repeat="attraction in attractions">
-
-
-        <h2>{{attraction.title}}</h2>
-
-        <p>
+        <p class="attraction__presentation">
             {{attraction.presentation}}
         </p>
 
 
-    </md-card>
+    </div>
 
 
 </md-content>
