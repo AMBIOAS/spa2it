@@ -60,15 +60,15 @@
             <section layout="column" ng-repeat="menu in infopages">
                  
                  
-                   <md-toolbar class="md-theme-light">
-                    <h1 class="md-toolbar-tools">
-                      <span>{{menu.menuTitle}}</span>
+                   <md-toolbar>
+                    <h1 class="infopage__title md-toolbar-tools">
+                      {{menu.menuTitle}}
                     </h1>
                   </md-toolbar>
                   
                   
                     <section layout="column" ng-repeat="submenu in menu.submenu">
-                      <md-button ng-href="#/page/{{submenu.idPage}}"   ng-click="closeMenu()">{{submenu.menuTitle}}</md-button>
+                      <md-button class="infopage__submenu" ng-href="#/page/{{submenu.idPage}}" ng-click="closeMenu()">{{submenu.menuTitle}}</md-button>
 
                     </section>
 
@@ -85,7 +85,7 @@
         <md-sidenav md-component-id="right" class="md-sidenav-right">
             <md-content class="md-padding">
             <section layout="column" ng-repeat="quickrefpage in quickrefpages">
-                  <md-button class="md-raised md-primary" ng-href="#/page/{{quickrefpage.idPage}}" ng-click="closeMenu()">{{quickrefpage.menuTitle}}</md-button>
+                  <md-button class="quickrefpage__button md-raised md-primary" ng-href="#/page/{{quickrefpage.idPage}}" ng-click="closeMenu()">{{quickrefpage.menuTitle}}</md-button>
             </section>
             </md-content>
         </md-sidenav>

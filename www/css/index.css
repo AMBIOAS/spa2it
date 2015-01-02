@@ -177,6 +177,27 @@ input[type=text] {
     overflow: auto;
 }
 
+
+.infopage__title {
+    
+}
+.infopage__submenu {
+    text-align: left;
+    padding: 1em 1em;
+    text-transform: none;
+    color: gray;
+}
+
+.quickrefpage__button {
+    text-align: left;
+    padding: 1em 1em;
+    margin-bottom: 0.5em;
+    text-transform: none;
+    color: gray;
+}
+
+
+
 /* @media only screen and (min-width : 900px) {
     md-card {
         width: 48%;
