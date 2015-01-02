@@ -1,26 +1,99 @@
 // angular controllers definition
 
 angular.module('spa2itApp.controllers', ['ngMaterial', 'ngAnimate'])
-    .controller('TabsCtrl', ['$scope', '$location', '$http',
-        function ($scope, $location, $http) {
-            $scope.tabSelected = -1;
+    .controller('TabsCtrl', ['$scope', '$location', '$http', '$mdSidenav',
+        function ($scope, $location, $http, $mdSidenav) {
+           $scope.tabSelected = -1;
 
-            $scope.onTabSelected = function (tab) {
-                console.log("onTabSelected");
-                console.log("#/" + tab.label);
-                $location.url(tab.label);
-            };
+           $scope.onTabSelected = function (tab) {
+               console.log("onTabSelected");
+               console.log("#/" + tab.label);
+               $location.url(tab.label);
+           };
 
-            $scope.tabpages = [];
+           $scope.tabpages = [];
+           $scope.infopages = []; // left
+           $scope.quickrefpages = []; // right
 
-            $http.get('http://2it.strong.no/Webdesk/get?page=1266774&properties=title,menuTitle,label,presentation&format=JSON&type=children')
-                .success(function (data) {
-                    $scope.tabpages = data.elements;
-                })
-                .error(function (data, status) {
-                    $log.log('[ERROR ' + status + '] ' + data);
-                    $scope.tabpages = [];
-                });
+
+           // ng-href="#/infopages"
+           $scope.openLeftMenu = function () {
+               $mdSidenav('left').toggle();
+           };
+
+           //  ng-href="#/quickrefpages"
+           $scope.openRightMenu = function () {
+               $mdSidenav('right').toggle();
+           };
+            
+             $scope.closeMenu = function () {
+               $mdSidenav('left').close();
+               $mdSidenav('right').close();
+           };
+
+
+           // get TABS pages
+           $http.get('http://2it.strong.no/Webdesk/get?page=1266774&properties=title,menuTitle,label,presentation&format=JSON&type=children')
+               .success(function (data) {
+                   $scope.tabpages = data.elements;
+
+               })
+               .error(function (data, status) {
+                   $log.log('[ERROR ' + status + '] ' + data);
+                   $scope.tabpages = [];
+               });
+
+           // get LEFT menu pages
+           $http.get('http://2it.strong.no/Webdesk/get?page=1266815&properties=title,menuTitle,idSmallPicture,presentation&format=JSON&type=children')
+               .success(function (data) {
+                   // headings:
+                   $scope.infopages = data.elements;
+               
+                    // get all sub-menu
+                    var sm = 0;
+                   for (sm = 0; sm < $scope.infopages.length; sm++) {
+                        console.log(sm);
+                       console.log("get submenu for " + $scope.infopages[sm].title);
+                        // get LEFT sub-menu pages
+                        $http.get('http://2it.strong.no/Webdesk/get?page='+$scope.infopages[sm].idPage+'&properties=idMainPage,title,menuTitle,idSmallPicture,presentation&format=JSON&type=children')
+               .success(function (data) {
+                   // headings:
+                            console.log("found " +  data.elements.length);
+                            console.log(sm);
+                            // find the infopage with the idMainPage
+                            for(var i=0; i<$scope.infopages.length;i++) {
+                                if ($scope.infopages[i].idPage == data.elements[0].idMainPage) {
+                                    $scope.infopages[i]['submenu'] = data.elements;
+                                    break;
+                                }
+                            }
+                            
+
+               
+                       })
+                       .error(function (data, status) {
+                           $log.log('[ERROR ' + status + '] ' + data);
+                       });
+                       
+                    }  
+                        
+               
+               })
+               .error(function (data, status) {
+                   $log.log('[ERROR ' + status + '] ' + data);
+                   $scope.infopages = [];
+               });
+
+           // get RIGHT menu pages
+           $http.get('http://2it.strong.no/Webdesk/get?page=1266809&properties=title,menuTitle,idSmallPicture,presentation&format=JSON&type=children')
+               .success(function (data) {
+                   $scope.quickrefpages = data.elements;
+               })
+               .error(function (data, status) {
+                   $log.log('[ERROR ' + status + '] ' + data);
+                   $scope.quickrefpages = [];
+               });
+
     }])
 // =================== SET UP IN THE ROUTER ====================
 .controller('MainCtrl', ['$scope',

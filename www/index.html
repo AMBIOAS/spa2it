@@ -36,13 +36,13 @@
     <div  ng-controller="TabsCtrl">
     <md-toolbar md-scroll-shrink>
       <div class="md-toolbar-tools">
-        <md-button href="#/infopages">
+        <md-button ng-click="openLeftMenu()">
           <md-icon icon="img/menu.svg" style="width: 24px; height: 24px;"></md-icon>
         </md-button>
         <span>2ITALIA</span>
         <!-- fill up the space between left and right area -->
         <span flex></span>
-        <md-button class="md-primary" ng-click="alert('Qref');" ng-href="#/quickrefpages">
+        <md-button  ng-click="openRightMenu()">
           <md-icon icon="img/threedots.svg" style="width: 24px; height: 24px;"></md-icon>
         </md-button>
       </div>
@@ -50,21 +50,52 @@
     
     <md-tabs md-selected="tabSelected">
         <md-tab ng-repeat="tab in tabpages" md-on-select="onTabSelected(tab)">{{tab.title}}</md-tab>
-<!--        <md-tab ng-repeat="page in tabpages"><a ng-href="#/{{page.label}}">{{page.title}}</a></md-tab>-->
-<!--
-        <md-tab md-on-select="showView('attractions')">Attraksjon</md-tab>
-        <md-tab md-on-select="showView('activities')">Aktiviteter</md-tab>
-        <md-tab md-on-select="showView('event')">Event</md-tab>
-        <md-tab md-on-select="showView('wedding')">Bryllup</md-tab>
-        <md-tab md-on-select="showView('calendar')">Kalender</md-tab>
-        <md-tab md-on-select="showView('accommodations')">Overnatting</md-tab>
--->
     </md-tabs>
+    
+
+    <div layout="row">
+        <md-sidenav md-component-id="left" class="md-sidenav-left">
+             
+            <md-content class="md-padding">
+            <section layout="column" ng-repeat="menu in infopages">
+                 
+                 
+                   <md-toolbar class="md-theme-light">
+                    <h1 class="md-toolbar-tools">
+                      <span>{{menu.menuTitle}}</span>
+                    </h1>
+                  </md-toolbar>
+                  
+                  
+                    <section layout="column" ng-repeat="submenu in menu.submenu">
+                      <md-button ng-href="#/page/{{submenu.idPage}}"   ng-click="closeMenu()">{{submenu.menuTitle}}</md-button>
+
+                    </section>
+
+            </section>
+            </md-content>
+        </md-sidenav>
+        <md-content>
+            
+        
+            <ng-view></ng-view>
+            
+            
+        </md-content>
+        <md-sidenav md-component-id="right" class="md-sidenav-right">
+            <md-content class="md-padding">
+            <section layout="column" ng-repeat="quickrefpage in quickrefpages">
+                  <md-button class="md-raised md-primary" ng-href="#/page/{{quickrefpage.idPage}}" ng-click="closeMenu()">{{quickrefpage.menuTitle}}</md-button>
+            </section>
+            </md-content>
+        </md-sidenav>
+    </div>
+    
+
+    
     
     </div>
     
-    
-    <ng-view></ng-view>
    
     <!-- JS LIBRARIES ===================================================== -->   
     <script type="text/javascript" src="bower_components/hammerjs/hammer.min.js"></script>
