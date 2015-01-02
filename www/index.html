@@ -1,6 +1,7 @@
 <!doctype html>
 <html ng-app="spa2itApp">
   <head>
+<!--    <base href="/">-->
     <!-- META ===================================================== -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -48,7 +49,8 @@
     </md-toolbar>
     
     <md-tabs md-selected="tabSelected">
-        <md-tab ng-repeat="page in tabpages"><a ng-href="#/{{page.label}}">{{page.title}}</a></a></md-tab>
+        <md-tab ng-repeat="tab in tabpages" md-on-select="onTabSelected(tab)">{{tab.title}}</md-tab>
+<!--        <md-tab ng-repeat="page in tabpages"><a ng-href="#/{{page.label}}">{{page.title}}</a></md-tab>-->
 <!--
         <md-tab md-on-select="showView('attractions')">Attraksjon</md-tab>
         <md-tab md-on-select="showView('activities')">Aktiviteter</md-tab>

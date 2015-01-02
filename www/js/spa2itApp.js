@@ -1,13 +1,20 @@
 // angular app definition
 
 angular.module('spa2itApp',  ['ngRoute', 'spa2itApp.controllers'])
-.config(function($routeProvider,$sceProvider){ //, $locationProvider){
+.config(['$routeProvider', '$locationProvider', '$sceProvider',function($routeProvider,$locationProvider, $sceProvider){ //, $locationProvider){
         $sceProvider.enabled(false);
-        $routeProvider
+        //$locationProvider.html5Mode(true);
+        
+    $routeProvider
         .when('/', // accommodations
         {
             controller: 'MainCtrl',
             templateUrl: 'view/main.html'
+        })
+        .when('/page/:idPage', // any page
+        {
+            controller: 'PageCtrl',
+            templateUrl: 'view/page.html'
         })
         .when('/accommodations', 
         {
@@ -51,8 +58,6 @@ angular.module('spa2itApp',  ['ngRoute', 'spa2itApp.controllers'])
         })
         .otherwise({ redirectTo: '/' });
     
-    //$locationProvider.html5Mode(true);
-    
-})
+}])
 ;
 

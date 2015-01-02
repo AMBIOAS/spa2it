@@ -13,7 +13,7 @@
 
         <img class="accommodation__img" ng-src="{{accommodation.imgURL}}">
 
-        <h1 class="accommodation__title">{{accommodation.title}}</h1>
+        <h1 class="accommodation__title"><a ng-href="#/page/{{accommodation.idPage}}">{{accommodation.menuTitle}}</a></h1>
 
         <p class="accommodation__presentation">
             {{accommodation.presentation}}

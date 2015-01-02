@@ -31,7 +31,11 @@ md-tab[aria-selected=true] a {
     background-color: black;
     width: 100%;
     opacity: 0.5;
-    color: white
+}
+.attraction__title a {
+    width: 100%;
+    color: white;
+    text-decoration: none;    
 }
 
 .attraction__presentation {
@@ -48,6 +52,7 @@ md-tab[aria-selected=true] a {
 .activities__title {
     font-size: 150%;
 }
+
 
 img.activities__img {
     float: right;
@@ -79,6 +84,12 @@ img.activities__img {
     width: 100%;
     opacity: 0.5;
     color: white
+}
+
+.accommodation__title a {
+    width: 100%;
+    color: white;
+    text-decoration: none;    
 }
 
 .accommodation__presentation {
@@ -114,6 +125,12 @@ img.activities__img {
     color: white
 }
 
+.trip__title a {
+    width: 100%;
+    color: white;
+    text-decoration: none;    
+}
+
 .trip__presentation {
     position: absolute;
     top: 320px;
@@ -136,6 +153,11 @@ img.activities__img {
     font-size: 18px;
 }
 
+.part__title a {
+    width: 100%;
+    color: black;
+    text-decoration: none;    
+}
 .part__presentation {
    font-size: 14px;
 }
@@ -148,6 +170,11 @@ input[type=text] {
     margin: 10px;
     border-radius: 5px;
 
+}
+
+.calendar__card {
+    height: 200px;
+    overflow: auto;
 }
 
 /* @media only screen and (min-width : 900px) {

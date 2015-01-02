@@ -14,8 +14,8 @@
 
         <img class="attraction__img" ng-src="{{attraction.imgURL}}">   
         
-        <h1 class="attraction__title">{{attraction.title}}</h1>
-
+        <h1 class="attraction__title"><a ng-href="#/page/{{attraction.idPage}}">{{attraction.title}}</a></h1>
+        
         <p class="attraction__presentation">
             {{attraction.presentation}}
         </p>

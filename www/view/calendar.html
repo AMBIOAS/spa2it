@@ -1,7 +1,39 @@
-    <md-content class="md-padding">
-      <h2>Kalender</h2>
-      <ul ng-repeat="season in calendar">
-          <li>{{season.title}}</li>
-      </ul>
-    </md-content>
-   
+<md-content class="md-padding">
+
+
+    <div  layout="row"  layout-sm="column" layout-md="column">
+
+    <div ng-repeat="season in calendar" flex-gt-md="25">
+        <md-toolbar class="md-theme-light">
+            <h1 class="md-toolbar-tools">
+              <span>{{season.menuTitle}}</span>
+            </h1>
+        </md-toolbar>
+
+       <md-card class="calendar__card">
+        <p><strong>{{season.introduction}}</strong></p>
+
+        <div ng-bind-html="season.text"></div>
+       </md-card>
+       
+       
+        <md-list layout="column">
+            <md-item ng-repeat="subpage in season.subpages">
+                <md-item-content>
+
+                    <div class="md-tile-content">
+                        <h3><a ng-href="#/page/{{subpage.link}}">{{subpage.title}}</a></h3>
+                        <p>
+                            {{subpage.presentation}}
+                        </p>
+                    </div>
+                </md-item-content>
+            </md-item>
+        </md-list>
+    </div>
+
+    </div>
+
+
+</md-content>
+

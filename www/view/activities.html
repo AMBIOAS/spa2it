@@ -9,7 +9,8 @@
             <div class="activities__header">
                 <img class="activities__img" ng-src="{{activities[0].imgURL}}">
 
-                <div class="activities__title">{{activities[0].title}}</div>
+                <div class="activities__title">{{activities[0].menuTitle}}</div>
+                
                 <div class="activities__presentation">{{activities[0].presentation}}</div>
             </div>
             
@@ -24,7 +25,10 @@
 
             <div class="trip" ng-repeat="trip in activitiesTrips | filter: searchActivitiesTrips">
                 <img class="trip__img" ng-src="{{trip.imgURL}}">
-                <h1 class="trip__title">{{trip.title}}</h1>
+                
+                <h1 class="trip__title"><a ng-href="#/page/{{trip.idPage}}">{{trip.menuTitle}}</a></h1>
+        
+                
                 <p class="trip__presentation">
                     {{trip.presentation}}
                 </p>
@@ -38,7 +42,7 @@
 
                 <img class="activities__img" ng-src="{{activities[1].imgURL}}">
 
-                <div class="activities__title">{{activities[1].title}}</div>
+                <div class="activities__title">{{activities[1].menuTitle}}</div>
                 <div class="activities__presentation">{{activities[0].presentation}}</div>
             </div>
             
@@ -55,7 +59,7 @@
                <table>
                    <tr>
                        <td><img class="part__img" ng-src="{{part.imgURL}}"></td>
-                       <td><h1 class="part__title">{{part.title}}</h1>
+                       <td><h1 class="part__title"><a ng-href="#/page/{{part.idPage}}">{{part.menuTitle}}</a></h1>
                              <p class="part__presentation">
                                  {{part.presentation}}
                              </p></td>
@@ -68,9 +72,6 @@
             
         </div>
     </div>
-
-
-
 
 
 </md-content>
