@@ -68,7 +68,7 @@
                   
                   
                     <section layout="column" ng-repeat="submenu in menu.submenu">
-                      <md-button style="text-align:left;" ng-href="#/page/{{submenu.idPage}}"   ng-click="closeMenu()">{{submenu.menuTitle}}</md-button>
+                      <md-button class="menu__left" ng-href="#/page/{{submenu.idPage}}"   ng-click="closeMenu()">{{submenu.menuTitle}}</md-button>
 
                     </section>
 
@@ -85,7 +85,7 @@
         <md-sidenav md-component-id="right" class="md-sidenav-right">
             <md-content class="md-padding">
             <section layout="column" ng-repeat="quickrefpage in quickrefpages">
-                  <md-button style="text-align:left;" class="md-raised md-primary" ng-href="#/page/{{quickrefpage.idPage}}" ng-click="closeMenu()">{{quickrefpage.menuTitle}}</md-button>
+                  <md-button class="md-raised md-primary menu__left" ng-href="#/page/{{quickrefpage.idPage}}" ng-click="closeMenu()">{{quickrefpage.menuTitle}}</md-button>
             </section>
             </md-content>
         </md-sidenav>
