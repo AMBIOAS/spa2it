@@ -46,16 +46,6 @@ angular.module('spa2itApp',  ['ngRoute', 'spa2itApp.controllers'])
             controller: 'WeddingCtrl',
             templateUrl: 'view/wedding.html'
         })
-        .when('/infopages', 
-        {
-            controller: 'InfoPagesCtrl',
-            templateUrl: 'view/infopages.html'
-        })
-        .when('/quickrefpages', 
-        {
-            controller: 'QuickRefPagesCtrl',
-            templateUrl: 'view/quickrefpages.html'
-        })
         .otherwise({ redirectTo: '/' });
     
 }])

@@ -212,8 +212,6 @@ angular.module('spa2itApp.controllers', ['ngMaterial', 'ngAnimate'])
 
 
 
-
-
                 })
                 .error(function (data, status) {
                     $log.log('[ERROR ' + status + '] ' + data);
@@ -344,32 +342,8 @@ angular.module('spa2itApp.controllers', ['ngMaterial', 'ngAnimate'])
                     $scope.activities = [];
                 });
     }])
-    .controller('InfoPagesCtrl', ['$scope', '$http',
-        function ($scope, $http) {
-            $scope.infopages = [];
 
-            $http.get('http://2it.strong.no/Webdesk/get?page=1266815&properties=title,menuTitle,idSmallPicture,presentation&format=JSON&type=children')
-                .success(function (data) {
-                    $scope.infopages = data.elements;
-                })
-                .error(function (data, status) {
-                    $log.log('[ERROR ' + status + '] ' + data);
-                    $scope.infopages = [];
-                });
-    }])
-    .controller('QuickRefPagesCtrl', ['$scope', '$http',
-        function ($scope, $http) {
-            $scope.quickrefpages = [];
 
-            $http.get('http://2it.strong.no/Webdesk/get?page=1266809&properties=title,menuTitle,idSmallPicture,presentation&format=JSON&type=children')
-                .success(function (data) {
-                    $scope.quickrefpages = data.elements;
-                })
-                .error(function (data, status) {
-                    $log.log('[ERROR ' + status + '] ' + data);
-                    $scope.quickrefpages = [];
-                });
-    }])
 
 
 ;

@@ -1,1 +1,0 @@
-// angular singleton / constants definitons
