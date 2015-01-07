@@ -1,12 +1,16 @@
 <md-content class="md-padding">
 
     <h2>{{page.title}}</h2>
-    <p><strong>{{page.presentation}}</strong></p>
+    <p>
+        <strong>{{page.presentation}}</strong>
+    </p>
 
     <div ng-bind-html="page.text"></div>
 
-        <ul ng-repeat="subpage in subpages">
-          <li><a href="#/page/{{subpage.idPage}}">{{subpage.menuTitle}}</a></li>
-      </ul>
-    
+    <ul ng-repeat="subpage in subpages">
+        <li>
+            <a href="#/page/{{subpage.idPage}}">{{subpage.menuTitle}}</a>
+        </li>
+    </ul>
+
 </md-content>

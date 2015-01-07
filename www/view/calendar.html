@@ -1,39 +1,39 @@
 <md-content class="md-padding">
+    <div layout="column" layout-align="start center" class="accommodations-wrapper">
 
+        <div class="search-box">
+            <input class="search-text" type="text" ng-model="searchSeasons">
+            <md-icon class="search-icon" icon="img/search.svg" style="width: 18px; height: 18px;"></md-icon>
+        </div>
+    </div>
+</md-content>
 
-    <div  layout="row"  layout-sm="column" layout-md="column">
+<div layout="row" layout-sm="column" layout-md="column">
 
     <div ng-repeat="season in calendar" flex-gt-md="25">
-        <md-toolbar class="md-theme-light">
+        <md-toolbar class="md-theme-light calendar__title">
             <h1 class="md-toolbar-tools">
-              <span>{{season.menuTitle}}</span>
+                 {{season.menuTitle}}
             </h1>
         </md-toolbar>
 
-       <md-card class="calendar__card">
-        <p><strong>{{season.introduction}}</strong></p>
+        <!-- <md-card class="calendar__card">
+            <p class="calendar__presentation">{{season.introduction}}</p>
 
-        <div ng-bind-html="season.text"></div>
-       </md-card>
-       
-       
-        <md-list layout="column">
-            <md-item ng-repeat="subpage in season.subpages">
-                <md-item-content>
+            <div ng-bind-html="season.text"></div>
+        </md-card>-->
 
-                    <div class="md-tile-content">
-                        <h3><a ng-href="#/page/{{subpage.link}}">{{subpage.title}}</a></h3>
-                        <p>
-                            {{subpage.presentation}}
-                        </p>
-                    </div>
-                </md-item-content>
-            </md-item>
-        </md-list>
+        <div ng-repeat="subpage in season.subpages | filter: searchSeasons" class="calendar__card-activity-wrapper">
+                <div class="calendar__season-img-wrapper">
+                    <img class="calendar__season-img" ng-src="http://placehold.it/480x480">
+                </div>
+                <h3 class="calendar__season-title"><a ng-href="#/page/{{subpage.link}}">{{subpage.title}}</a></h3>
+                <p class="calendar__season-presentation">
+                    {{subpage.presentation}}
+                </p>
+            
+        </div>
     </div>
 
-    </div>
-
-
-</md-content>
+</div>
 

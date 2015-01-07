@@ -1,2 +1,9 @@
+
+# cordova build [platform]
 platforms/
+
+# installed
 bower_components/
+
+# do not upload to GitHub!
+password

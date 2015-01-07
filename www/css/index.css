@@ -8,19 +8,32 @@ md-tab[aria-selected=true] a {
     color: #ffffff;
 }
 
+.attractions-wrapper {
+ 
+}
 
+.attractions {
+    text-align: center;
+}
 .attraction {
-    width: 320px;
+    width: 320px; /*320px*/
     height: 480px;
     overflow: hidden;
-    float: left;
+/*    float: left;*/
+    display: inline-block;
+    text-align: left;
     margin-bottom: 40px;
     margin-right: 20px;
     position: relative;
 }
 
-.attraction__img {
+.attraction__img-wrapper {
+    width: 320px;
+    height: 320px;
+    overflow: hidden;
     position: absolute;
+}
+.attraction__img {
 }
 
 .attraction__title {
@@ -61,13 +74,22 @@ img.activities__img {
 
 
 
+.accommodations-wrapper {
+ 
+}
+
+.accommodations {
+    text-align: center;
+}
 .accommodation {
     width: 320px;
     height: 480px;
     overflow: hidden;
-    float: left;
+/*    float: left;*/
+    display: inline-block;
     margin-bottom: 40px;
     margin-right: 20px;
+    text-align: left;
     position: relative;
 }
 
@@ -99,12 +121,16 @@ img.activities__img {
 
 /* Trips */
 
-
+.trips {
+text-align: center;
+}
 .trip {
     width: 320px;
     height: 480px;
     overflow: hidden;
-    float: left;
+/*    float: left;*/
+    display: inline-block;
+    text-align: left;
     margin-bottom: 40px;
     margin-right: 20px;
     position: relative;
@@ -145,6 +171,11 @@ img.activities__img {
     margin-bottom: 20px;
 }
 
+.part table td {
+   vertical-align:top;
+   padding: 0.5em;
+}
+
 .part__img {
    
 }
@@ -165,11 +196,27 @@ img.activities__img {
 
 
 input[type=text] {
-    border: 1px solid #03a9f4;
-    padding: 10px;
-    margin: 10px;
-    border-radius: 5px;
 
+
+}
+
+
+.search-box {
+    position: relative;
+}
+
+.search-text {
+    border: 1px solid #ccc; /*#03a9f4*/
+    padding: 10px;
+    margin-bottom: 2em;
+    border-radius: 5px;
+}
+
+
+.search-icon {
+    position: absolute;
+    top: 5px;
+    right: 20px;
 }
 
 .calendar__card {
@@ -177,6 +224,59 @@ input[type=text] {
     overflow: auto;
 }
 
+.calendar__card-activity-wrapper {
+    height: 300px;
+    overflow: hidden;
+}
+
+/* -------------------------*/
+
+.calendar__card-activity-wrapper {
+    width: 320px; /*320px*/
+    height: 160px;
+    overflow: hidden;
+/*    float: left;
+    display: inline-block; */
+    text-align: left;
+    position: relative;
+    border: 3px solid white;
+
+  
+}
+
+.calendar__season-img-wrapper {
+    width: 100%;
+    height: 160px;
+    overflow: hidden;
+    position: absolute;
+}
+.calendar__season-img {
+}
+
+.calendar__season-title {
+    position: absolute;
+    padding: 0;
+    margin-top: 0;
+    background-color: black;
+    width: 100%;
+    opacity: 0.5;
+}
+.calendar__season-title a {
+    width: 100%;
+    color: white;
+    text-decoration: none;    
+}
+
+.calendar__season-presentation {
+    position: absolute;
+    padding: 0 8px;
+    bottom: 0px;
+    background-color: gray;
+    width: 100%;
+    opacity: 0.5;
+}
+
+/* ------------------------ */
 
 .infopage__title {
     

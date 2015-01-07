@@ -3,96 +3,98 @@
 angular.module('spa2itApp.controllers', ['ngMaterial', 'ngAnimate'])
     .controller('TabsCtrl', ['$scope', '$location', '$http', '$mdSidenav',
         function ($scope, $location, $http, $mdSidenav) {
-           $scope.tabSelected = -1;
+            $scope.tabSelected = -1;
+            $scope.noTabSelected = function () {
+                 $scope.tabSelected = -1;
+            }
+            $scope.onTabSelected = function (tab) {
+                console.log("onTabSelected");
+                console.log("#/" + tab.label);
+                $location.url(tab.label);
+            };
 
-           $scope.onTabSelected = function (tab) {
-               console.log("onTabSelected");
-               console.log("#/" + tab.label);
-               $location.url(tab.label);
-           };
-
-           $scope.tabpages = [];
-           $scope.infopages = []; // left
-           $scope.quickrefpages = []; // right
-
-
-           // ng-href="#/infopages"
-           $scope.openLeftMenu = function () {
-               $mdSidenav('left').toggle();
-           };
-
-           //  ng-href="#/quickrefpages"
-           $scope.openRightMenu = function () {
-               $mdSidenav('right').toggle();
-           };
-            
-             $scope.closeMenu = function () {
-               $mdSidenav('left').close();
-               $mdSidenav('right').close();
-           };
+            $scope.tabpages = [];
+            $scope.infopages = []; // left
+            $scope.quickrefpages = []; // right
 
 
-           // get TABS pages
-           $http.get('http://2it.strong.no/Webdesk/get?page=1266774&properties=title,menuTitle,label,presentation&format=JSON&type=children')
-               .success(function (data) {
-                   $scope.tabpages = data.elements;
+            // ng-href="#/infopages"
+            $scope.openLeftMenu = function () {
+                $mdSidenav('left').toggle();
+            };
 
-               })
-               .error(function (data, status) {
-                   $log.log('[ERROR ' + status + '] ' + data);
-                   $scope.tabpages = [];
-               });
+            //  ng-href="#/quickrefpages"
+            $scope.openRightMenu = function () {
+                $mdSidenav('right').toggle();
+            };
 
-           // get LEFT menu pages
-           $http.get('http://2it.strong.no/Webdesk/get?page=1266815&properties=title,menuTitle,idSmallPicture,presentation&format=JSON&type=children')
-               .success(function (data) {
-                   // headings:
-                   $scope.infopages = data.elements;
-               
+            $scope.closeMenu = function () {
+                $mdSidenav('left').close();
+                $mdSidenav('right').close();
+            };
+
+
+            // get TABS pages
+            $http.get('http://2it.strong.no/Webdesk/get?page=1266774&properties=title,menuTitle,label,presentation&format=JSON&type=children')
+                .success(function (data) {
+                    $scope.tabpages = data.elements;
+
+                })
+                .error(function (data, status) {
+                    $log.log('[ERROR ' + status + '] ' + data);
+                    $scope.tabpages = [];
+                });
+
+            // get LEFT menu pages
+            $http.get('http://2it.strong.no/Webdesk/get?page=1266815&properties=title,menuTitle,idSmallPicture,presentation&format=JSON&type=children')
+                .success(function (data) {
+                    // headings:
+                    $scope.infopages = data.elements;
+
                     // get all sub-menu
                     var sm = 0;
-                   for (sm = 0; sm < $scope.infopages.length; sm++) {
+                    for (sm = 0; sm < $scope.infopages.length; sm++) {
                         console.log(sm);
-                       console.log("get submenu for " + $scope.infopages[sm].title);
+                        console.log("get submenu for " + $scope.infopages[sm].title);
                         // get LEFT sub-menu pages
-                        $http.get('http://2it.strong.no/Webdesk/get?page='+$scope.infopages[sm].idPage+'&properties=idMainPage,title,menuTitle,idSmallPicture,presentation&format=JSON&type=children')
-               .success(function (data) {
-                   // headings:
-                            console.log("found " +  data.elements.length);
-                            console.log(sm);
-                            // find the infopage with the idMainPage
-                            for(var i=0; i<$scope.infopages.length;i++) {
-                                if ($scope.infopages[i].idPage == data.elements[0].idMainPage) {
-                                    $scope.infopages[i]['submenu'] = data.elements;
-                                    break;
+                        $http.get('http://2it.strong.no/Webdesk/get?page=' + $scope.infopages[sm].idPage + '&properties=idMainPage,title,menuTitle,idSmallPicture,presentation&format=JSON&type=children')
+                            .success(function (data) {
+                                // headings:
+                                console.log("found " + data.elements.length);
+                                console.log(sm);
+                                // find the infopage with the idMainPage
+                                for (var i = 0; i < $scope.infopages.length; i++) {
+                                    if ($scope.infopages[i].idPage == data.elements[0].idMainPage) {
+                                        $scope.infopages[i]['submenu'] = data.elements;
+                                        break;
+                                    }
                                 }
-                            }
-                            
 
-               
-                       })
-                       .error(function (data, status) {
-                           $log.log('[ERROR ' + status + '] ' + data);
-                       });
-                       
-                    }  
-                        
-               
-               })
-               .error(function (data, status) {
-                   $log.log('[ERROR ' + status + '] ' + data);
-                   $scope.infopages = [];
-               });
 
-           // get RIGHT menu pages
-           $http.get('http://2it.strong.no/Webdesk/get?page=1266809&properties=title,menuTitle,idSmallPicture,presentation&format=JSON&type=children')
-               .success(function (data) {
-                   $scope.quickrefpages = data.elements;
-               })
-               .error(function (data, status) {
-                   $log.log('[ERROR ' + status + '] ' + data);
-                   $scope.quickrefpages = [];
-               });
+
+                            })
+                            .error(function (data, status) {
+                                $log.log('[ERROR ' + status + '] ' + data);
+                            });
+
+                    }
+
+
+                })
+                .error(function (data, status) {
+                    $log.log('[ERROR ' + status + '] ' + data);
+                    $scope.infopages = [];
+                });
+
+            // get RIGHT menu pages
+            $http.get('http://2it.strong.no/Webdesk/get?page=1266809&properties=title,menuTitle,idSmallPicture,presentation&format=JSON&type=children')
+                .success(function (data) {
+                    $scope.quickrefpages = data.elements;
+                })
+                .error(function (data, status) {
+                    $log.log('[ERROR ' + status + '] ' + data);
+                    $scope.quickrefpages = [];
+                });
 
     }])
 // =================== SET UP IN THE ROUTER ====================
@@ -158,14 +160,14 @@ angular.module('spa2itApp.controllers', ['ngMaterial', 'ngAnimate'])
                     $scope.calendar = data.elements;
                     // GET SUBPAGES FOR EACH SEASON
 
-                $scope.calendar[0].subpages = [];
-                $scope.calendar[1].subpages = [];
-                $scope.calendar[2].subpages = [];
-                $scope.calendar[3].subpages = [];
+                    $scope.calendar[0].subpages = [];
+                    $scope.calendar[1].subpages = [];
+                    $scope.calendar[2].subpages = [];
+                    $scope.calendar[3].subpages = [];
 
                     console.log("get calendar subpages for:");
                     console.log($scope.calendar[0].idPage);
-                 
+
                     // GET SUBPAGES 0
                     $http.get('http://2it.strong.no/Webdesk/get?page=' + $scope.calendar[0].idPage + '&properties=title,menuTitle,link,presentation&format=JSON&type=children')
                         .success(function (data) {
@@ -244,7 +246,7 @@ angular.module('spa2itApp.controllers', ['ngMaterial', 'ngAnimate'])
                         var rawURL = data.elements[i]['area-1'];
                         var imgURL = "http://placehold.it/320x320";
                         if ("" != rawURL) {
-                            imgURL = rawURL.replace(/w\d+-h\d+-no/, "h320");
+                            imgURL = rawURL.replace(/w\d+-h\d+-no/, "s320-c");
                         }
                         data.elements[i]['imgURL'] = imgURL;
                     }
@@ -266,7 +268,7 @@ angular.module('spa2itApp.controllers', ['ngMaterial', 'ngAnimate'])
                         var rawURL = data.elements[i]['area-1'];
                         var imgURL = "http://placehold.it/320x320";
                         if ("" != rawURL) {
-                            imgURL = rawURL.replace(/w\d+-h\d+-no/, "h320");
+                            imgURL = rawURL.replace(/w\d+-h\d+-no/, "s320-c"); // s320-c
                         }
                         data.elements[i]['imgURL'] = imgURL;
                     }
@@ -291,7 +293,7 @@ angular.module('spa2itApp.controllers', ['ngMaterial', 'ngAnimate'])
                         var rawURL = data.elements[i]['area-1'];
                         var imgURL = "http://placehold.it/96x96";
                         if ("" != rawURL) {
-                            imgURL = rawURL.replace(/w\d+-h\d+-no/, "h320");
+                            imgURL = rawURL.replace(/w\d+-h\d+-no/, "s320-c");
                         }
                         data.elements[i]['imgURL'] = imgURL;
                     }
@@ -305,7 +307,7 @@ angular.module('spa2itApp.controllers', ['ngMaterial', 'ngAnimate'])
                                 var rawURL = data.elements[i]['area-1'];
                                 var imgURL = "http://placehold.it/320x320";
                                 if ("" != rawURL) {
-                                    imgURL = rawURL.replace(/w\d+-h\d+-no/, "h320");
+                                    imgURL = rawURL.replace(/w\d+-h\d+-no/, "s320-c");
                                 }
                                 data.elements[i]['imgURL'] = imgURL;
                             }
@@ -324,7 +326,7 @@ angular.module('spa2itApp.controllers', ['ngMaterial', 'ngAnimate'])
                                 var rawURL = data.elements[i]['area-1'];
                                 var imgURL = "http://placehold.it/160x160";
                                 if ("" != rawURL) {
-                                    imgURL = rawURL.replace(/w\d+-h\d+-no/, "h160");
+                                    imgURL = rawURL.replace(/w\d+-h\d+-no/, "s160-c");
                                 }
                                 data.elements[i]['imgURL'] = imgURL;
                             }

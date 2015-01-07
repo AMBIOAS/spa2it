@@ -1,7 +1,8 @@
 <!doctype html>
 <html ng-app="spa2itApp">
-  <head>
-<!--    <base href="/">-->
+
+<head>
+    <!--    <base href="/">-->
     <!-- META ===================================================== -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,79 +13,72 @@
     <!-- MATERIAL CSS ===================================================== -->
     <link rel="stylesheet" type="text/css" href="bower_components/angular-material/angular-material.css">
     <link rel="stylesheet" type="text/css" href="bower_components/angular-material/themes/blue-theme.css">
-    
+
     <!-- CUSTOM CSS ===================================================== -->
     <link rel="stylesheet" type="text/css" href="css/index.css">
-    
 
-  </head>
-  <body>
+
+</head>
+
+<body>
     <!-- Add your site or app content here -->
-    <div  ng-controller="TabsCtrl">
-    <md-toolbar md-scroll-shrink>
-      <div class="md-toolbar-tools">
-        <md-button ng-click="openLeftMenu()">
-          <md-icon icon="img/menu.svg" style="width: 24px; height: 24px;"></md-icon>
-        </md-button>
-        <span>2ITALIA</span>
-        <!-- fill up the space between left and right area -->
-        <span flex></span>
-        <md-button  ng-click="openRightMenu()">
-          <md-icon icon="img/threedots.svg" style="width: 24px; height: 24px;"></md-icon>
-        </md-button>
-      </div>
-    </md-toolbar>
-    
-    <md-tabs md-selected="tabSelected">
-        <md-tab ng-repeat="tab in tabpages" md-on-select="onTabSelected(tab)">{{tab.title}}</md-tab>
-    </md-tabs>
-    
+    <div ng-controller="TabsCtrl">
+        <md-toolbar md-scroll-shrink>
+            <div class="md-toolbar-tools">
+                <md-button ng-click="openLeftMenu()">
+                    <md-icon icon="img/menu.svg" style="width: 24px; height: 24px;"></md-icon>
+                </md-button>
+                <span>2ITALIA</span>
+                <!-- fill up the space between left and right area -->
+                <span flex></span>
+                <md-button ng-click="openRightMenu()">
+                    <md-icon icon="img/threedots.svg" style="width: 24px; height: 24px;"></md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
 
-    <div layout="row">
-        <md-sidenav md-component-id="left" class="md-sidenav-left">
-             
-            <md-content class="md-padding">
-            <section layout="column" ng-repeat="menu in infopages">
-                 
-                 
-                   <md-toolbar>
-                    <h1 class="infopage__title md-toolbar-tools">
-                      {{menu.menuTitle}}
-                    </h1>
-                  </md-toolbar>
-                  
-                  
-                    <section layout="column" ng-repeat="submenu in menu.submenu">
-                      <md-button class="infopage__submenu" ng-href="#/page/{{submenu.idPage}}" ng-click="closeMenu()">{{submenu.menuTitle}}</md-button>
+        <md-tabs md-selected="tabSelected">
+            <md-tab ng-repeat="tab in tabpages" md-on-select="onTabSelected(tab)">{{tab.title}}</md-tab>
+        </md-tabs>
+
+
+        <div layout="row" class="body-wrapper">
+            <md-sidenav md-component-id="left" class="md-sidenav-left">
+
+                <md-content class="md-padding">
+                    <section layout="column" ng-repeat="menu in infopages">
+                        <md-toolbar>
+                            <h1 class="infopage__title md-toolbar-tools">{{menu.menuTitle}}</h1>
+                        </md-toolbar>
+                        <section layout="column" ng-repeat="submenu in menu.submenu">
+                            <md-button class="infopage__submenu" ng-href="#/page/{{submenu.idPage}}" ng-click="closeMenu()">{{submenu.menuTitle}}</md-button>
+                        </section>
 
                     </section>
+                </md-content>
+            </md-sidenav>
+            <md-content class="body-content">
 
-            </section>
-            </md-content>
-        </md-sidenav>
-        <md-content>
-            
-        
-            <ng-view></ng-view>
-            
-            
-        </md-content>
-        <md-sidenav md-component-id="right" class="md-sidenav-right">
-            <md-content class="md-padding">
-            <section layout="column" ng-repeat="quickrefpage in quickrefpages">
-                  <md-button class="quickrefpage__button md-raised md-primary" ng-href="#/page/{{quickrefpage.idPage}}" ng-click="closeMenu()">{{quickrefpage.menuTitle}}</md-button>
-            </section>
-            </md-content>
-        </md-sidenav>
-    </div>
-    
 
-    
-    
+                <ng-view onload="noTabSelected()" class="body-view"></ng-view>
+
+
+            </md-content>
+            <md-sidenav md-component-id="right" class="md-sidenav-right">
+                <md-content class="md-padding">
+                    <section layout="column" ng-repeat="quickrefpage in quickrefpages">
+                        <md-button class="quickrefpage__button md-raised md-primary" ng-href="#/page/{{quickrefpage.idPage}}" ng-click="closeMenu()">{{quickrefpage.menuTitle}}</md-button>
+                    </section>
+                </md-content>
+            </md-sidenav>
+        </div>
+
+
+
     </div>
-    
-   
-    <!-- JS LIBRARIES ===================================================== -->   
+
+
+    <!-- JS LIBRARIES ===================================================== -->
     <script type="text/javascript" src="bower_components/hammerjs/hammer.min.js"></script>
     <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
     <script type="text/javascript" src="bower_components/angular-route/angular-route.min.js"></script>
@@ -92,10 +86,11 @@
     <script type="text/javascript" src="bower_components/angular-aria/angular-aria.min.js"></script>
     <script type="text/javascript" src="bower_components/angular-material/angular-material.min.js"></script>
 
-    <!-- JS  ===================================================== -->   
+    <!-- JS  ===================================================== -->
     <script type="text/javascript" src="js/spa2itApp.js"></script>
     <script type="text/javascript" src="js/spa2itCtrl.js"></script>
 
-   
-  </body>
+
+</body>
+
 </html>

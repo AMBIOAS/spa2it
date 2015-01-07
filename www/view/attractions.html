@@ -1,27 +1,26 @@
 <md-content class="md-padding">
-    
+<div layout="column" layout-align="start center" class="attractions-wrapper" >
 
-<div layout="row" layout-align="space-between center">
-  <div>&nbsp;</div>
-
-  <div>Søk: <input type="text" ng-model="searchAttractions"></div>
-</div>
-
-    
-
-    <div class="attraction" ng-repeat="attraction in attractions | filter: searchAttractions">
-
-
-        <img class="attraction__img" ng-src="{{attraction.imgURL}}">   
-        
-        <h1 class="attraction__title"><a ng-href="#/page/{{attraction.idPage}}">{{attraction.title}}</a></h1>
-        
-        <p class="attraction__presentation">
-            {{attraction.presentation}}
-        </p>
-
-
+    <div class="search-box">
+        <input class="search-text" type="text" ng-model="searchAttractions">
+        <md-icon class="search-icon" icon="img/search.svg" style="width: 18px; height: 18px;"></md-icon>
     </div>
 
 
+    <div class="attractions">
+       <div class="attraction" ng-repeat="attraction in attractions | filter: searchAttractions">
+           <div  class="attraction__img-wrapper"><img class="attraction__img" ng-src="{{attraction.imgURL}}"></div>
+           <h1 class="attraction__title"><a ng-href="#/page/{{attraction.idPage}}">{{attraction.title}}</a></h1>
+       
+           <p class="attraction__presentation">
+               {{attraction.presentation}}
+           </p>
+       
+       </div>
+    </div>
+
+
+
+</div>
 </md-content>
+

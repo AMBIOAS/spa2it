@@ -1,24 +1,21 @@
 <md-content class="md-padding">
-
-    <div layout="row" layout-align="space-between center">
-        <div>&nbsp;</div>
-
-        <div>
-            Søk: <input type="text" ng-model="searchAccommodations">
-        </div>
-    </div>
-
+<div layout="column" layout-align="start center" class="accommodations-wrapper" >
+    
+       <div class="search-box">
+           <input class="search-text" type="text" ng-model="searchAccommodations">
+           <md-icon class="search-icon" icon="img/search.svg" style="width: 18px; height: 18px;"></md-icon>
+       </div>
+       
+    <div class="accommodations">
     <div class="accommodation" ng-repeat="accommodation in accommodations | filter: searchAccommodations">
 
-
         <img class="accommodation__img" ng-src="{{accommodation.imgURL}}">
-
         <h1 class="accommodation__title"><a ng-href="#/page/{{accommodation.idPage}}">{{accommodation.menuTitle}}</a></h1>
-
         <p class="accommodation__presentation">
             {{accommodation.presentation}}
         </p>
 
     </div>
-
+    </div>
+</div>
 </md-content>

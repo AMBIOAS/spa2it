@@ -1,11 +1,11 @@
 {
   "name": "spa2it",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "authors": [
-    "fredpallesen <fred@strong.no>"
+    "fred@strong.no"
   ],
   "description": "Travel to Lucca",
-  "main": "js/app.js",
+  "main": "js/spa2itApp.js",
   "keywords": [
     "lucca",
     "italia"
